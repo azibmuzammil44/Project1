@@ -1,15 +1,8 @@
-import * as yup from "yup";
+import * as Yup from 'yup';
 
-
-const validateSchema = yup.object().shape({
-    username: yup.string()
-      .email('Invalid email format')
-      .required('Email is required'),
-    password: yup.string()
-      .required('Password is required')
-      .min(8, 'Password must be at least 8 characters long')
-      .matches(/[a-zA-Z]/, 'Password can only contain Latin letters.')
-  });
-
+const validateSchema = Yup.object().shape({
+  email: Yup.string().email('Invalid email format').required('Email is required'),
+  password: Yup.string().required('Password is required'),
+});
 
 export default validateSchema;

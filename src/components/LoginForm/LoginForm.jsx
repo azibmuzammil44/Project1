@@ -24,9 +24,11 @@ const LoginForm = () => {
     } catch (err) {
       // If validation fails, set the errors
       const validationErrors = {};
-      err.inner.forEach((error) => {
-        validationErrors[error.path] = error.message;
-      });
+      if (err.inner) {
+        err.inner.forEach((error) => {
+          validationErrors[error.path] = error.message;
+        });
+      }
       setErrors(validationErrors);
     }
   };
@@ -67,9 +69,8 @@ const LoginForm = () => {
             </label>
             <a href="#">Forget Password</a>
           </div>
-          <button type="submit" onClick={handleSubmit}>
-            Login
-          </button>
+          <button type="submit">Login</button>
+
           <div className="register-link">
             <p>
               Don't have any account? <a href="#">Register</a>
